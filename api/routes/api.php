@@ -1,19 +1,27 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ReplyController;
+use App\Http\Controllers\Api\TicketController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::prefix('v1')->group(function ()
+{
+    Route::post('/register', [UserController::class, 'store']);
+    Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::middleware('auth:sanctum')->group(function ()
+    {
+        Route::get('/users', [UserController::class, 'index']);
+        Route::get('/users/{id}', [UserController::class, 'show']);
+
+        Route::get('/tickets', [TicketController::class, 'index']);
+        Route::get('/tickets/{ticketId}', [TicketController::class, 'show']);
+        Route::post('/tickets', [TicketController::class, 'store']);
+        Route::put('/tickets/{ticketId}', [TicketController::class, 'update']);
+
+        Route::post('tickets/{ticketId}/replies', [ReplyController::class, 'store']);
+    });
 });
