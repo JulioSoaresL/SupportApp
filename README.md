@@ -1,7 +1,7 @@
 ### Pré Requisitos
 - [Laravel](https://laravel.com/docs/11.x)
 - [Composer](https://getcomposer.org/)
-- [Yarn](https://chore-update--yarnpkg.netlify.app/pt-BR/docs/install)
+- [NodeJS](https://nodejs.org/en)
 - [Docker](https://www.docker.com/get-started/)
 - PHP 7.3.x
 
@@ -30,7 +30,7 @@ Após volte ao terminal ainda no caminho _SupportApp/api_
 composer install
 
 ## subir container dos serviços
-docker composer up -d
+docker compose up -d
 
 ## restaurar migrações (tabelas do banco de dados)
 php artisan migrate:fresh
@@ -51,3 +51,6 @@ yarn dev
 ou
 npm run dev
 ```
+## Obs:
+
+Assim que a api estiver em execução é possível utilizar API Client para testar a aplicação
