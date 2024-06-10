@@ -7,8 +7,15 @@
 
 ### Instalação
 
-1. Clone o repositorio utilizando o comando ``git clone <repositorio>``.
-2. Entre no repositorio clonado, vá a pasta api e adicione um arquivo _.ENV_ e adicione as configurações do DB
+```
+## clonar repositorio
+git clone git@github.com:JulioSoaresL/SupportApp.git
+
+## navegar para a pasta da api
+cd SupportApp/api
+```
+
+Adicione um arquivo _.ENV_ e altere as seguintes informações
 ```
 DB_CONNECTION=pgsql
 DB_HOST=<IP do Host>
@@ -17,6 +24,30 @@ DB_DATABASE=supportApp
 DB_USERNAME=docker
 DB_PASSWORD=docker
 ```
-3. No terminal execute o comando ``composer install``
-4. Ainda no terminal execute ``docker compose up -d``
-5. Após execute ``php artisan migrate``
+Após volte ao terminal ainda no caminho _SupportApp/api_
+```
+## baixa as dependencias do composer
+composer install
+
+## subir container dos serviços
+docker composer up -d
+
+## restaurar migrações (tabelas do banco de dados)
+php artisan migrate:fresh
+```
+### Frontend. 
+
+Dentro do repositorio _SupportApp/layout_ abra o terminal e execute os comandos abaixo
+
+```
+## instalar pacotes do package.json
+yarn
+ou
+npm install
+
+
+## para iniciar o serviço
+yarn dev
+ou
+npm run dev
+```
