@@ -23,5 +23,6 @@ Route::prefix('v1')->group(function ()
         Route::put('/tickets/{ticketId}', [TicketController::class, 'update']);
 
         Route::post('tickets/{ticketId}/replies', [ReplyController::class, 'store']);
+        Route::get('/authcheck', [AuthController::class, 'checkAuth']);
     });
 });
